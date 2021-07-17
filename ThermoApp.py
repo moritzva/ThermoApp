@@ -134,9 +134,9 @@ variable_type = tk.StringVar()
 type_absolute = tk.Radiobutton(frame1, text='Absolute', variable=variable_type, value='absolute',
 							   command=lambda: deactivate_entry_reference())
 type_absolute.place(relx=0.42, relheight=rel_height, rely=y_type, relwidth=0.1)
-type_relative = tk.Radiobutton(frame1, text='Relative', variable=variable_type, value='relative',
-							   command=lambda: activate_entry_reference())
-type_relative.place(relx=0.55, relheight=rel_height, rely=y_type, relwidth=0.1)
+type_reference = tk.Radiobutton(frame1, text='Relative', variable=variable_type, value='reference',
+								command=lambda: activate_entry_reference())
+type_reference.place(relx=0.55, relheight=rel_height, rely=y_type, relwidth=0.1)
 variable_type.set('absolute')
 
 
@@ -182,7 +182,7 @@ def area_colormap():
 
 area_colormap()
 
-colormap_list = ['jet', 'magma', 'plasma', 'seismic', 'hsv']
+colormap_list = ['jet', 'magma', 'plasma', 'seismic', 'viridis']
 variable_colormap = tk.StringVar()
 variable_colormap.set(colormap_list)
 colormap_choice = tk.Listbox(frame1, selectbackground='lightgreen', listvariable=variable_colormap)
@@ -267,7 +267,7 @@ def show_thermo():
 	label_error.config(bg='grey', text='')
 	filename = entry_file.get()
 
-	if variable_type.get() == 'relative':
+	if variable_type.get() == 'reference':
 		type_temp = 'reference'
 	else:
 		type_temp = 'absolute'

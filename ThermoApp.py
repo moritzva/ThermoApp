@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from create_thermo import Thermogram
 
-# object oriented version of ThermoApp
+# object oriented version 
 
 root = tk.Tk()
 root.title('Thermo')

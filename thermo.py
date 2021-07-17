@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-from thermo_bild_app import Thermobild
+from thermo_bild_app import Thermogram
 
 
 root = tk.Tk()
@@ -268,9 +268,9 @@ def show_thermo():
 	filename = entry_file.get()
 
 	if variable_type.get() == 'relative':
-		type_temp = 'referenz'
+		type_temp = 'reference'
 	else:
-		type_temp = 'absolut'
+		type_temp = 'absolute'
 
 	reference_file = str(entry_reference.get())
 
@@ -341,15 +341,15 @@ def show_thermo():
 		height = 8
 		size_y.config(bg='tomato')
 
-	therm = Thermobild(art=type_temp,
-					   referenzdatei=reference_file,
+	therm = Thermogram(imagetype=type_temp,
+					   referencefilename=reference_file,
 					   colorlimit=[colorlimitmin, colorlimitmax],
 					   colormap=cmap,
-					   zuschneiden=crop,
-					   xlimit=[cropxmin, cropxmax],  # Achtung: wegen upper origin (kleine Zahl, grosse Zahl)
-					   ylimit=[cropymin, cropymax],  # Achtung: wegen upper origin (grosse Zahl, kleine Zahl)
-					   bildgroesse=[width, height],  # [bildbreite / 100, bildhoehe / 100]
-					   dateiname=filename)
+					   crop=crop,
+					   xlimit=[cropxmin, cropxmax],  # Attention: upper origin (small number, big number)
+					   ylimit=[cropymin, cropymax],  # Attention: upper origin (big number, small number)
+					   imagesize=[width, height],  # [width / 100, height / 100]
+					   filename=filename)
 
 	try:
 		therm.show()

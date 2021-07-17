@@ -343,7 +343,7 @@ def show_thermo():
 
 	therm = Thermogram(imagetype=type_temp,
 					   referencefilename=reference_file,
-					   colorlimit=[colorlimitmin, colorlimitmax],
+					   colorlimit=[colorlimitmin, colorlimitmax],  # colorlimit
 					   colormap=cmap,
 					   crop=crop,
 					   xlimit=[cropxmin, cropxmax],  # Attention: upper origin (small number, big number)

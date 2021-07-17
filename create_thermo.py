@@ -109,7 +109,7 @@ if __name__ == "__main__":
 
 	thermo = Thermogram(imagetype='reference',
 						filename='/home/moritz/PycharmProjects/Python_Studienarbeit/'
-								 'ThermoApp/Daten/GW_1_Z2_864.txt',
+								 'ThermoApp/Daten/GW_1_Z2_863.txt',
 						referencefilename='/home/moritz/PycharmProjects/Python_Studienarbeit/'
 										  'ThermoApp/Daten/GW_1_Z2_860.txt',
 						colorlimit=[-1, 1],

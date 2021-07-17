@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
-from thermo_bild_app import Thermogram
+from create_thermo import Thermogram
 
 
 root = tk.Tk()

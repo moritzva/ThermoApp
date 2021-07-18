@@ -77,12 +77,14 @@ class ThermoApp:
 		self.crop_y_min.place(relx=0.75, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
 		self.crop_y_max = tk.Entry(self.frame1, state='disabled')
 		self.crop_y_max.place(relx=0.9, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
+
 		self.size_x = tk.Entry(self.frame1)
 		self.size_x.insert(0, '10')
 		self.size_x.place(relx=0.47, relheight=REL_HEIGHT, rely=Y_SIZE, relwidth=0.05)
 		self.size_y = tk.Entry(self.frame1)
 		self.size_y.insert(0, '8')
 		self.size_y.place(relx=0.6, relheight=REL_HEIGHT, rely=Y_SIZE, relwidth=0.05)
+
 		self.show_thermogram_button = tk.Button(self.frame2, text='Show thermogram', command=lambda: self.show_thermo(),
 										   state='normal')
 		self.show_thermogram_button.place(relx=0.84, rely=0.1, relwidth=0.15, relheight=0.8)

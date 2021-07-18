@@ -6,8 +6,7 @@
 * display absolute temperature or relative temperature change with regards to reference thermogram
 * customize colormap, crop thermogram, select imagesize 
 
-##Install
-###Dependencies: 
+##Dependencies: 
 * [python3](http://python.org)
 * [matplotlib](http://matplotlib.org)
 * [numpy](https://numpy.org/)
@@ -19,5 +18,4 @@
 execute ```ThermoApp.py```
 * Terminal:
 execute ```python3 ThermoApp.py```
-
 * For Windows users: Running ```ThermoApp.bat``` as admin works as well

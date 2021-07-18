@@ -16,6 +16,6 @@
 
 ##How to use
 * IDE: 
-*execute ```ThermoApp.py```
+* execute ```ThermoApp.py```
 * Terminal:
 ```python3 ThermoApp.py```

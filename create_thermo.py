@@ -21,7 +21,7 @@ class Thermogram:
 	def get_data(self):
 
 		# skiprows, because pandas doesnt recognise the ° symbol
-		df = pd.read_csv(self.filename, sep='\t', skiprows=18, header=None)
+		df = pd.read_csv(self.filename, sep='\t', skiprows=18, header=None, encoding='cp1252')
 		df = df.fillna(0)  # NaN is now 0
 		df = df.to_numpy()  # dataframe to ndarray
 
@@ -31,7 +31,7 @@ class Thermogram:
 
 		# load in reference file
 		# skiprows, because pandas doesnt recognise the ° symbol
-		df_reference = pd.read_csv(self.referencefilename, sep='\t', skiprows=18, header=None)
+		df_reference = pd.read_csv(self.referencefilename, sep='\t', skiprows=18, header=None, encoding='cp1252')
 		df_reference = df_reference.fillna(0)  # NaN is now 0
 		df_reference = df_reference.to_numpy()  # dataframe to ndarray
 		return df_reference

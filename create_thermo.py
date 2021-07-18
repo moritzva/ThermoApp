@@ -115,7 +115,7 @@ if __name__ == "__main__":
 						referencefilename='/home/moritz/PycharmProjects/Python_Studienarbeit/'
 										  'ThermoApp/Daten/GW_1_Z2_860.txt',
 						colorlimit=[-1, 1],
-						colormap='magma',
+						colormap='jet',
 						crop=False,
 						xlimit=[205, 296],  # Attention: upper origin (small number, big number)
 						ylimit=[353, 85],  # Attention: upper origin (big number, small number)

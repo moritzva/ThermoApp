@@ -4,18 +4,18 @@ import tkinter as tk
 from tkinter import filedialog
 from create_thermo import Thermogram
 
-rel_height = 0.07
-y_filename = 0.01
-y_type = 0.12
-y_reference = 0.23
-y_colorlimit = 0.34
-y_colormap = 0.45
-y_crop = 0.67
-y_coordinates = 0.78
-y_size = 0.89
+REL_HEIGHT = 0.07
+Y_FILENAME = 0.01
+Y_TYPE = 0.12
+Y_REFERENCE = 0.23
+Y_COLORLIMIT = 0.34
+Y_COLORMAP = 0.45
+Y_CROP = 0.67
+Y_COORDINATES = 0.78
+Y_SIZE = 0.89
 
 
-class Window:
+class ThermoApp:
 
 	def __init__(self, root):
 		self.root = root
@@ -28,61 +28,61 @@ class Window:
 		self.frame2.place(relx=0.01, rely=0.92, relheight=0.07, relwidth=0.98)
 
 		self.entry_file = tk.Entry(self.frame1, state='disabled')
-		self.entry_file.place(relx=0.17, rely=y_filename, relheight=rel_height, relwidth=0.67)
+		self.entry_file.place(relx=0.17, rely=Y_FILENAME, relheight=REL_HEIGHT, relwidth=0.67)
 		self.browse_file_button = tk.Button(self.frame1, text='Browse file', bg='lightgreen',
 									   command=lambda: self.file_opener())
-		self.browse_file_button.place(relx=0.85, rely=y_filename, relheight=rel_height, relwidth=0.13)
+		self.browse_file_button.place(relx=0.85, rely=Y_FILENAME, relheight=REL_HEIGHT, relwidth=0.13)
 
 		self.entry_reference = tk.Entry(self.frame1, state='disabled')
-		self.entry_reference.place(relx=0.17, rely=y_reference, relheight=rel_height, relwidth=0.67)
+		self.entry_reference.place(relx=0.17, rely=Y_REFERENCE, relheight=REL_HEIGHT, relwidth=0.67)
 		self.browse_reference_button = tk.Button(self.frame1, text='Browse reference', bg='gainsboro',
 											command=lambda: self.reference_opener(), state='disabled')
-		self.browse_reference_button.place(relx=0.85, rely=y_reference, relheight=rel_height, relwidth=0.13)
+		self.browse_reference_button.place(relx=0.85, rely=Y_REFERENCE, relheight=REL_HEIGHT, relwidth=0.13)
 
 		self.variable_type = tk.StringVar()
 		self.type_absolute = tk.Radiobutton(self.frame1, text='Absolute', variable=self.variable_type,
 											value='absolute', command=lambda: self.deactivate_entry_reference())
-		self.type_absolute.place(relx=0.42, relheight=rel_height, rely=y_type, relwidth=0.1)
+		self.type_absolute.place(relx=0.42, relheight=REL_HEIGHT, rely=Y_TYPE, relwidth=0.1)
 		self.type_reference = tk.Radiobutton(self.frame1, text='Relative', variable=self.variable_type,
 											 value='reference', command=lambda: self.activate_entry_reference())
-		self.type_reference.place(relx=0.55, relheight=rel_height, rely=y_type, relwidth=0.1)
+		self.type_reference.place(relx=0.55, relheight=REL_HEIGHT, rely=Y_TYPE, relwidth=0.1)
 		self.variable_type.set('absolute')
 
 		self.colorlimit_min = tk.Entry(self.frame1)
-		self.colorlimit_min.place(relx=0.47, relheight=rel_height, rely=y_colorlimit, relwidth=0.05)
+		self.colorlimit_min.place(relx=0.47, relheight=REL_HEIGHT, rely=Y_COLORLIMIT, relwidth=0.05)
 		self.colorlimit_max = tk.Entry(self.frame1)
-		self.colorlimit_max.place(relx=0.6, relheight=rel_height, rely=y_colorlimit, relwidth=0.05)
+		self.colorlimit_max.place(relx=0.6, relheight=REL_HEIGHT, rely=Y_COLORLIMIT, relwidth=0.05)
 
 		self.colormap_list = ['jet', 'magma', 'plasma', 'seismic', 'viridis']
 		self.variable_colormap = tk.StringVar()
 		self.variable_colormap.set(self.colormap_list)
 		self.colormap_choice = tk.Listbox(self.frame1, selectbackground='lightgreen',
 										  listvariable=self.variable_colormap)
-		self.colormap_choice.place(relx=0.42, rely=y_colormap, relheight=0.11 + rel_height, relwidth=0.23)
+		self.colormap_choice.place(relx=0.42, rely=Y_COLORMAP, relheight=0.11 + REL_HEIGHT, relwidth=0.23)
 
 		self.variable_crop = tk.StringVar()
 		self.crop_yes = tk.Radiobutton(self.frame1, text='Yes', variable=self.variable_crop, value='crop',
 						  command=lambda: self.activate_coordinates())
-		self.crop_yes.place(relx=0.42, relheight=rel_height, rely=y_crop, relwidth=0.1)
+		self.crop_yes.place(relx=0.42, relheight=REL_HEIGHT, rely=Y_CROP, relwidth=0.1)
 		self.crop_no = tk.Radiobutton(self.frame1, text='No', variable=self.variable_crop, value='nocrop',
 								 command=lambda: self.deactivate_coordinates())
-		self.crop_no.place(relx=0.55, relheight=rel_height, rely=y_crop, relwidth=0.1)
+		self.crop_no.place(relx=0.55, relheight=REL_HEIGHT, rely=Y_CROP, relwidth=0.1)
 		self.variable_crop.set('nocrop')
 
 		self.crop_x_min = tk.Entry(self.frame1, state='disabled')
-		self.crop_x_min.place(relx=0.47, relheight=rel_height, rely=y_coordinates, relwidth=0.05)
+		self.crop_x_min.place(relx=0.47, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
 		self.crop_x_max = tk.Entry(self.frame1, state='disabled')
-		self.crop_x_max.place(relx=0.6, relheight=rel_height, rely=y_coordinates, relwidth=0.05)
+		self.crop_x_max.place(relx=0.6, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
 		self.crop_y_min = tk.Entry(self.frame1, state='disabled')
-		self.crop_y_min.place(relx=0.75, relheight=rel_height, rely=y_coordinates, relwidth=0.05)
+		self.crop_y_min.place(relx=0.75, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
 		self.crop_y_max = tk.Entry(self.frame1, state='disabled')
-		self.crop_y_max.place(relx=0.9, relheight=rel_height, rely=y_coordinates, relwidth=0.05)
+		self.crop_y_max.place(relx=0.9, relheight=REL_HEIGHT, rely=Y_COORDINATES, relwidth=0.05)
 		self.size_x = tk.Entry(self.frame1)
 		self.size_x.insert(0, '10')
-		self.size_x.place(relx=0.47, relheight=rel_height, rely=y_size, relwidth=0.05)
+		self.size_x.place(relx=0.47, relheight=REL_HEIGHT, rely=Y_SIZE, relwidth=0.05)
 		self.size_y = tk.Entry(self.frame1)
 		self.size_y.insert(0, '8')
-		self.size_y.place(relx=0.6, relheight=rel_height, rely=y_size, relwidth=0.05)
+		self.size_y.place(relx=0.6, relheight=REL_HEIGHT, rely=Y_SIZE, relwidth=0.05)
 		self.show_thermogram_button = tk.Button(self.frame2, text='Show thermogram', command=lambda: self.show_thermo(),
 										   state='normal')
 		self.show_thermogram_button.place(relx=0.84, rely=0.1, relwidth=0.15, relheight=0.8)
@@ -113,30 +113,30 @@ class Window:
 			self.entry_reference.insert(0, reference_path)
 
 	def help_window(self):
-		help_win = tk.Toplevel(self.root)
-		help_win.title('Information')
-		help_win.geometry('650x420')
-		txt = 'This script only works with .txt files which were exported through the IRBIS 3 software package. ' \
-			'If used correctly, this tool will create customizable thermograms. \n\n' \
-			'1. Load in a valid .txt file through the green "Browse file" button.\n' \
-			'2. Choose between an absolute and a relative way of plotting your data. ' \
-			'Load in a reference file if you checked "Relative".\n' \
-			'3. Set the minimum and maximum values of the colorbar legend. Trial and error will lead to the best result.\n' \
-			'4. You may choose between the listed colormaps. It is suggested to choose the "jet" version.\n' \
-			'5. Choose whether you want to crop the figure. If so, enter the respective x- and y-coordinates. ' \
-			'Do this by first plotting the uncropped image and hovering over the result with the cursor. ' \
-			'The matplotlib figure should print the current coordinates somewhere on the canvas. ' \
-			'Use these values for the cropping of your image.\n' \
-			'Notice: Interchanging the xmin/xmax or ymin/ymax values will result in the mirroring of your image!!!\n' \
-			'6. Choose if you want to change the standard image size of 1000 x 800 pixel.\n\n' \
-			'Press the "Show thermogram" button to plot your image. ' \
-			'To save the image, use the button on the matplotlib canvas under the created image. ' \
-			'The button should look like a cartridge.'
+			help_win = tk.Toplevel(self.root)
+			help_win.title('Information')
+			help_win.geometry('650x420')
+			txt = 'This script only works with .txt files which were exported through the IRBIS 3 software package. ' \
+				'If used correctly, this tool will create customizable thermograms. \n\n' \
+				'1. Load in a valid .txt file through the green "Browse file" button.\n' \
+				'2. Choose between an absolute and a relative way of plotting your data. ' \
+				'Load in a reference file if you checked "Relative".\n' \
+				'3. Set the minimum and maximum values of the colorbar legend. Trial and error will lead to the best result.\n' \
+				'4. You may choose between the listed colormaps. It is suggested to choose the "jet" version.\n' \
+				'5. Choose whether you want to crop the figure. If so, enter the respective x- and y-coordinates. ' \
+				'Do this by first plotting the uncropped image and hovering over the result with the cursor. ' \
+				'The matplotlib figure should print the current coordinates somewhere on the canvas. ' \
+				'Use these values for the cropping of your image.\n' \
+				'Notice: Interchanging the xmin/xmax or ymin/ymax values will result in the mirroring of your image!!!\n' \
+				'6. Choose if you want to change the standard image size of 1000 x 800 pixel.\n\n' \
+				'Press the "Show thermogram" button to plot your image. ' \
+				'To save the image, use the button on the matplotlib canvas under the created image. ' \
+				'The button should look like a cartridge.'
 
-		help_text = tk.Text(help_win, bg='lightgrey', wrap=tk.WORD)
-		help_text.insert('1.0', txt)
-		help_text.config(state='disabled')
-		help_text.pack(pady=0.00, padx=0)
+			help_text = tk.Text(help_win, bg='lightgrey', wrap=tk.WORD)
+			help_text.insert('1.0', txt)
+			help_text.config(state='disabled')
+			help_text.pack(pady=0.00, padx=0)
 
 	def about_window(self):
 		about_win = tk.Toplevel(self.root)
@@ -176,37 +176,37 @@ class Window:
 
 	def labels(self):
 		label_file = tk.Label(self.frame1, text='Selected file:', anchor='center')
-		label_file.place(relx=0.01, rely=y_filename, relheight=rel_height, relwidth=0.14)
+		label_file.place(relx=0.01, rely=Y_FILENAME, relheight=REL_HEIGHT, relwidth=0.14)
 		label_type = tk.Label(self.frame1, text='Type of temperature representation', anchor='center')
-		label_type.place(relx=0.01, rely=y_type, relheight=rel_height, relwidth=0.4)
+		label_type.place(relx=0.01, rely=Y_TYPE, relheight=REL_HEIGHT, relwidth=0.4)
 		label_reference = tk.Label(self.frame1, text='Reference file:', anchor='center')
-		label_reference.place(relx=0.01, rely=y_reference, relheight=rel_height, relwidth=0.14)
+		label_reference.place(relx=0.01, rely=Y_REFERENCE, relheight=REL_HEIGHT, relwidth=0.14)
 		label_colorlimit = tk.Label(self.frame1, text='Scaling limits of legend', anchor='center')
-		label_colorlimit.place(relx=0.01, rely=y_colorlimit, relheight=rel_height, relwidth=0.4)
+		label_colorlimit.place(relx=0.01, rely=Y_COLORLIMIT, relheight=REL_HEIGHT, relwidth=0.4)
 		label_colorlimit_min = tk.Label(self.frame1, text='Min:')
-		label_colorlimit_min.place(relx=0.42, rely=y_colorlimit, relheight=rel_height, relwidth=0.05)
+		label_colorlimit_min.place(relx=0.42, rely=Y_COLORLIMIT, relheight=REL_HEIGHT, relwidth=0.05)
 		label_colorlimit_max = tk.Label(self.frame1, text='Max:')
-		label_colorlimit_max.place(relx=0.55, rely=y_colorlimit, relheight=rel_height, relwidth=0.05)
+		label_colorlimit_max.place(relx=0.55, rely=Y_COLORLIMIT, relheight=REL_HEIGHT, relwidth=0.05)
 		label_colormap = tk.Label(self.frame1, text='Colormap', anchor='center')
-		label_colormap.place(relx=0.01, rely=y_colormap, relheight=rel_height, relwidth=0.4)
+		label_colormap.place(relx=0.01, rely=Y_COLORMAP, relheight=REL_HEIGHT, relwidth=0.4)
 		label_crop = tk.Label(self.frame1, text='Crop image?', anchor='center')
-		label_crop.place(relx=0.01, rely=y_crop, relheight=rel_height, relwidth=0.4)
+		label_crop.place(relx=0.01, rely=Y_CROP, relheight=REL_HEIGHT, relwidth=0.4)
 		label_coordinates = tk.Label(self.frame1, text='Coordinates for cropping', anchor='center')
-		label_coordinates.place(relx=0.01, rely=y_coordinates, relheight=rel_height, relwidth=0.4)
+		label_coordinates.place(relx=0.01, rely=Y_COORDINATES, relheight=REL_HEIGHT, relwidth=0.4)
 		label_coordiantes_xmin = tk.Label(self.frame1, text='Min x:')
-		label_coordiantes_xmin.place(relx=0.42, rely=y_coordinates, relheight=rel_height, relwidth=0.05)
+		label_coordiantes_xmin.place(relx=0.42, rely=Y_COORDINATES, relheight=REL_HEIGHT, relwidth=0.05)
 		label_coordinates_xmax = tk.Label(self.frame1, text='Max x:')
-		label_coordinates_xmax.place(relx=0.55, rely=y_coordinates, relheight=rel_height, relwidth=0.05)
+		label_coordinates_xmax.place(relx=0.55, rely=Y_COORDINATES, relheight=REL_HEIGHT, relwidth=0.05)
 		label_coordinates_ymin = tk.Label(self.frame1, text='Min y:')
-		label_coordinates_ymin.place(relx=0.7, rely=y_coordinates, relheight=rel_height, relwidth=0.05)
+		label_coordinates_ymin.place(relx=0.7, rely=Y_COORDINATES, relheight=REL_HEIGHT, relwidth=0.05)
 		label_coordinates_ymax = tk.Label(self.frame1, text='Max y:')
-		label_coordinates_ymax.place(relx=0.85, rely=y_coordinates, relheight=rel_height, relwidth=0.05)
+		label_coordinates_ymax.place(relx=0.85, rely=Y_COORDINATES, relheight=REL_HEIGHT, relwidth=0.05)
 		label_size = tk.Label(self.frame1, text='Image size in pixel / 100', anchor='center')
-		label_size.place(relx=0.01, rely=y_size, relheight=rel_height, relwidth=0.4)
+		label_size.place(relx=0.01, rely=Y_SIZE, relheight=REL_HEIGHT, relwidth=0.4)
 		label_size_x = tk.Label(self.frame1, text='Width:')
-		label_size_x.place(relx=0.42, rely=y_size, relheight=rel_height, relwidth=0.05)
+		label_size_x.place(relx=0.42, rely=Y_SIZE, relheight=REL_HEIGHT, relwidth=0.05)
 		label_size_y = tk.Label(self.frame1, text='Height:')
-		label_size_y.place(relx=0.55, rely=y_size, relheight=rel_height, relwidth=0.05)
+		label_size_y.place(relx=0.55, rely=Y_SIZE, relheight=REL_HEIGHT, relwidth=0.05)
 
 	def show_thermo(self):
 		self.label_error.config(bg='grey', text='')
@@ -307,7 +307,7 @@ class Window:
 if __name__ == '__main__':
 
 	r = tk.Tk()
-	w = Window(r)
-	w.create_menu()
-	w.labels()
+	app = ThermoApp(r)
+	app.create_menu()
+	app.labels()
 	r.mainloop()

@@ -88,7 +88,6 @@ class ThermoApp:
 		self.show_thermogram_button = tk.Button(self.frame2, text='Show thermogram', command=lambda: self.show_thermo(),
 										   state='normal')
 		self.show_thermogram_button.place(relx=0.84, rely=0.1, relwidth=0.15, relheight=0.8)
-
 		self.label_error = tk.Label(self.frame2, anchor='w', text='', fg='black', bg='grey', font='bold')
 		self.label_error.place(relx=0.01, rely=0.1, relheight=0.8, relwidth=0.51)
 

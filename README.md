@@ -7,7 +7,7 @@
 * customize colormap, crop thermogram, select imagesize 
 
 ## Dependencies: 
-* [python3](http://python.org)
+* [python 3](http://python.org)
 * [matplotlib](http://matplotlib.org)
 * [numpy](https://numpy.org/)
 * [pandas](https://pandas.pydata.org/)

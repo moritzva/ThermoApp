@@ -15,6 +15,7 @@
 * [tkinter](https://docs.python.org/3/library/tkinter.html)
 
 ##How to use
-* IDE: execute ThermoApp.py
+* IDE: 
+*execute ```ThermoApp.py```
 * Terminal:
-* ```python3 ThermoApp.py```
+```python3 ThermoApp.py```

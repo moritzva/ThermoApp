@@ -2,8 +2,8 @@
 
 ## Features
 * GUI
-* create thermograms from .TXT files which were exported through IRBIS 3 software package
-* display absolute temperature or relative temperature change with regards to reference thermogram
+* create thermograms from .TXT files which were exported by IRBIS 3 software
+* display absolute temperatures or relative temperature change with regards to reference thermogram
 * customize colormap, crop thermogram, select imagesize 
 
 ## Dependencies: 

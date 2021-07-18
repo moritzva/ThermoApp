@@ -16,6 +16,8 @@
 
 ##How to use
 * IDE: 
-* execute ```ThermoApp.py```
+execute ```ThermoApp.py```
 * Terminal:
-```python3 ThermoApp.py```
+execute ```python3 ThermoApp.py```
+
+* For Windows users: Running ```ThermoApp.bat``` as admin works as well

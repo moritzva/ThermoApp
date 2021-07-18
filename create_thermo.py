@@ -106,21 +106,3 @@ class Thermogram:
 		info = Thermogram.get_info(self)
 		return 'FrameIndex \t= {0} \nRecTime \t= {1} \nSekunden \t= {2:.2f} \n'.format(info[0], info[1], info[2])
 
-
-if __name__ == "__main__":
-
-	thermo = Thermogram(imagetype='reference',
-						filename='/home/moritz/PycharmProjects/Python_Studienarbeit/'
-								 'ThermoApp/Daten/GW_1_Z2_863.txt',
-						referencefilename='/home/moritz/PycharmProjects/Python_Studienarbeit/'
-										  'ThermoApp/Daten/GW_1_Z2_860.txt',
-						colorlimit=[-1, 1],
-						colormap='jet',
-						crop=False,
-						xlimit=[205, 296],  # Attention: upper origin (small number, big number)
-						ylimit=[353, 85],  # Attention: upper origin (big number, small number)
-						imagesize=[4.92, 10.72])  # [width / 100, height / 100]
-
-	print(thermo)
-	thermo.show()
-

@@ -3,6 +3,7 @@
 import tkinter as tk
 from tkinter import filedialog
 from create_thermo import Thermogram
+from os import getcwd
 
 REL_HEIGHT = 0.07
 Y_FILENAME = 0.01
@@ -99,16 +100,14 @@ class ThermoApp:
 		self.root.config(menu=menubar)
 
 	def file_opener(self):
-		file_path = filedialog.askopenfilename(initialdir='/home/moritz/PycharmProjects/Python_Studienarbeit/'
-														  'ThermoApp/Daten')
+		file_path = filedialog.askopenfilename(initialdir=getcwd())
 		if file_path:
 			self.entry_file.config(state='normal')
 			self.entry_file.delete(0, tk.END)
 			self.entry_file.insert(0, file_path)
 
 	def reference_opener(self):
-		reference_path = filedialog.askopenfilename(initialdir='/home/moritz/PycharmProjects/Python_Studienarbeit/'
-															   'ThermoApp/Daten')
+		reference_path = filedialog.askopenfilename(initialdir=getcwd())
 		if reference_path:
 			self.entry_reference.config(state='normal')
 			self.entry_reference.delete(0, tk.END)

@@ -17,7 +17,7 @@
 * IDE: 
 execute ```ThermoApp.py```
 * Terminal:
-execute ```python3 ThermoApp.py```
+execute ```python3 ThermoApp.py``` or ```python ThermoApp_v2.py```
 * File explorer: Run ```ThermoApp.bat``` as administrator
 
 ## Screenshots

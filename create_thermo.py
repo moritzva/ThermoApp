@@ -79,7 +79,8 @@ class Thermogram:
 			label = '\u0394T in °C'
 
 		else:  # absolute
-			image = ax.imshow(Thermogram.get_data(self), cmap=self.colormap, origin="upper")  # cmap defines colormap
+			df = Thermogram.get_data(self)
+			image = ax.imshow(df, cmap=self.colormap, origin="upper")  # cmap defines colormap
 			label = 'Temperature in °C'
 
 		image.set_clim(vmin=self.colorlimit[0], vmax=self.colorlimit[1])  # scaling of legend
@@ -89,8 +90,20 @@ class Thermogram:
 
 		ax.set_axis_off()  # delete ax labels
 		plt.tight_layout()  # better layout
-
 		return image
+
+	def values(self):
+		df = Thermogram.get_data(self)
+		if self.imagetype == 'reference':
+			df_referenz = Thermogram.get_reference(self)
+			df_delta = df - df_referenz
+			minimum = np.min(df_delta[np.nonzero(df_delta)])
+			values = [df_delta.mean(), df_delta.max(), float(minimum)]
+		else:
+			minimum = np.min(df[np.nonzero(df)])
+			values = [df.mean(), df.max(), float(minimum)]
+
+		return values
 
 	def show(self):
 		Thermogram.draw_thermo(self)
@@ -104,5 +117,8 @@ class Thermogram:
 	def __str__(self):
 		# define what the output of print(Thermogram) will be
 		info = Thermogram.get_info(self)
-		return 'FrameIndex \t= {0} \nRecTime \t= {1} \nSekunden \t= {2:.2f} \n'.format(info[0], info[1], info[2])
+		values = Thermogram.values(self)
+		return 'FrameIndex \t= {0} \nRecTime \t= {1} \nSekunden \t= {2:.2f} \n' \
+			'Mean Temp. \t= {3:.2f} \nMax Temp. \t= {4:.2f} \nMin Temp. \t= {5:.2f} \n'\
+			.format(info[0], info[1], info[2], values[0], values[1], values[2])
 

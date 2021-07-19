@@ -137,21 +137,19 @@ class ThermoApp:
 			help_text = tk.Text(help_win, bg='lightgrey', wrap=tk.WORD)
 			help_text.insert('1.0', txt)
 			help_text.config(state='disabled')
-			help_text.pack(pady=0.00, padx=0)
+			help_text.pack()
 
 	def about_window(self):
 		about_win = tk.Toplevel(self.root)
 		about_win.title('About')
-		about_win.geometry('600x120')
+		about_win.geometry('600x90')
 		txt = 'Script written by Moritz Müller.\n' \
 			'Feel free to raise issues through the GitHub repository:\n' \
 			'https://github.com/moritzva/ThermoApp'
 
 		help_text = tk.Label(about_win, text=txt, anchor='center')
 		help_text.config(state='normal')
-		about_win.update()
-		height = about_win.winfo_height()
-		help_text.pack(pady=0.25*height)
+		help_text.pack()
 
 	def activate_coordinates(self):
 		self.crop_x_min.config(state='normal', bg='white')
@@ -298,6 +296,7 @@ class ThermoApp:
 						   filename=filename)
 
 		try:
+			print(therm)
 			therm.show()
 		except Exception:
 			therm.destroy()

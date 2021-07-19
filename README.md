@@ -18,7 +18,7 @@
 execute ```ThermoApp.py```
 * Terminal:
 execute ```python3 ThermoApp.py``` or ```python ThermoApp_v2.py```
-* File explorer: Run ```ThermoApp.bat``` as administrator
+* File explorer: Run ```ThermoApp.bat``` or ```ThermoApp_v2.bat``` as administrator
 
 ## Screenshots
 ![Graph](doc/screenshots.png)
